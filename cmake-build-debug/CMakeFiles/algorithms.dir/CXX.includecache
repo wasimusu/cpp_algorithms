@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wasim/CLionProjects/algorithms/bubblesort.cpp
+iostream
+-
+algorithm
+-
+bits/stdc++.h
+-
+
