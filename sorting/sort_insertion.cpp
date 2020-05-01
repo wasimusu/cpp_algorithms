@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <bits/stdc++.h>
-#include "utils.cpp"
+#include "../utils.cpp"
 
 
 void generate_random_arrs(int *arr, int n) {
@@ -14,7 +14,8 @@ void generate_random_arrs(int *arr, int n) {
 /**
  * Insert each item in the correct position
  */
-void insertion_sort(int *arr, int n) {
+template<class T>
+void insertion_sort(T *arr, int n) {
 
     for (int i = 1; i < n; i++) {
         int j = i;

@@ -1,15 +1,17 @@
 #include <bits/stdc++.h>
 
+using namespace std;
+
 void generate_random_arrs(int *arr, int n) {
     for (int i = 0; i < n; i++) {
         arr[i] = rand() % 100;
     }
 }
 
-
-void merge(int *arr, int start, int mid, int end) {
+template<class T>
+void merge(T *arr, int start, int mid, int end) {
     int n = end - start + 1;
-    int temp[n];
+    T temp[n];
 
     int i = start;
     int j = mid + 1;
@@ -30,8 +32,8 @@ void merge(int *arr, int start, int mid, int end) {
     std::copy(temp, temp + n, arr + start);
 }
 
-
-void merge_sort(int *arr, int start, int end) {
+template<class T>
+void merge_sort(T *arr, int start, int end) {
     if (end - start <= 1) {
         if (arr[start] > arr[end]) std::swap(arr[start], arr[end]);
         return;
@@ -42,19 +44,27 @@ void merge_sort(int *arr, int start, int end) {
     merge(arr, start, mid, end);
 }
 
-void mergesort(int *arr, int n) {
+template<class T>
+void mergesort(T *arr, int n) {
     merge_sort(arr, 0, n - 1);
 }
 
 
 int main() {
-    int n = 615;
+    int n = 500;
     int arr[n];
     for (int _ = 0; _ < 100; _++) {
         generate_random_arrs(arr, n);
         mergesort(arr, n);
         assert(std::is_sorted(arr, arr + n));
     }
+
+    // Check if it works with chars
+    n = 5;
+    char str[] = {'w', 'a', 's', 'i', 'm'};
+    mergesort(str, n);
+    assert(std::is_sorted(str, str + n));
+
     std::cout << "Successfully sorted using merge sort! \n";
     return 0;
 }

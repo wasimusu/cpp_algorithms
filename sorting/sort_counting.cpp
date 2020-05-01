@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <bits/stdc++.h>
-#include "utils.cpp"
+#include "../utils.cpp"
 
 
 void generate_random_arrs(int *arr, int n) {
@@ -15,7 +15,8 @@ void generate_random_arrs(int *arr, int n) {
  * Count freq of each item
  * Useful if the range of numbers is small compared to the length of the array
  */
-void counting_sort(int *arr, int n) {
+template<class T>
+void counting_sort(T *arr, int n) {
     std::map<int, int> counter;
     for(int i = 0; i < n; i++)
         counter[arr[i]] += 1;

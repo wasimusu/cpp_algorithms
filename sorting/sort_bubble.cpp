@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <bits/stdc++.h>
-#include "utils.cpp"
+#include "../utils.cpp"
 
 
 void generate_random_arrs(int *arr, int n) {
@@ -11,7 +11,8 @@ void generate_random_arrs(int *arr, int n) {
 }
 
 
-void bubble_sort(int *arr, int n) {
+template<class T>
+void bubble_sort(T *arr, int n) {
     bool is_sorted = false;
     while (!is_sorted) {
         is_sorted = true;
