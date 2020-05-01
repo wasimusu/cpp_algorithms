@@ -1,0 +1,3 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+project(algorithms)
+set(CMAKE_CXX_STANDARD 14)
