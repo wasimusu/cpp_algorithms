@@ -1,7 +1,0 @@
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/merge.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/count.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/bubble.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/insertion.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/segtree.dir
-/home/wasim/CLionProjects/algorithms/cmake-build-debug/CMakeFiles/edit_cache.dir

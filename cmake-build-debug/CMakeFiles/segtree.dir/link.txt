@@ -1,1 +1,0 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/segtree.dir/segment_tree.cpp.o  -o segtree 

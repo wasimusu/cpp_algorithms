@@ -13,7 +13,7 @@ void generate_random_arrs(int *arr, int n) {
 
 /**
  * Count freq of each item
- * Useful if the range of numbers is small compared to the length of the array
+ * Useful if the range of numbers is small compared to the _size of the array
  */
 template<class T>
 void counting_sort(T *arr, int n) {

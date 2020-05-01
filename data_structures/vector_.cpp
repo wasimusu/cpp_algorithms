@@ -7,25 +7,50 @@ using namespace std;
 template<class T>
 class vector_ {
 private:
-    T arr[2];
-    size_t length = 0;
-    size_t capacity = 2;
+    size_t capacity = 4;
+    T *arr;
+    size_t _size = 0;
 public:
-    vector_() = default;
+    vector_() {
+        arr = new T[capacity];
+    }
 
     // Copy constructor
     explicit vector_(const T &other) {
         arr = other.arr;
-        length = other.length;
+        _size = other.length;
         capacity = other.capacity;
     }
 
     // copy assignment operator
-    vector_& operator=(const T &other) {
+    vector_ &operator=(const T &other) {
         arr = other.arr;
-        length = other.length;
+        _size = other.length;
         capacity = other.capacity;
         return *this;
+    }
+
+    T &operator[](int index) {
+        return arr[index];
+    }
+
+    T &at(int index) {
+        if (index >= _size) throw invalid_argument("Index out of range error");
+        return arr[index];
+    }
+
+    void insert(const int index, const T &value) {
+        if (_size + 1 > capacity) {
+            resize();
+        }
+        if (index < 0 || index > _size) {
+            throw invalid_argument("Index out of range error");
+        }
+        for (int i = _size; i > index; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = value;
+        ++_size;
     }
 
     // move constructor
@@ -33,61 +58,82 @@ public:
         if (other == *this) return;
 
         arr = other.arr;
-        length = other.length;
+        _size = other.length;
         capacity = other.capacity;
         delete other;
     }
 
 
     // move assignment operator
-    vector_ operator=(const T &&other) noexcept {
+    vector_& operator=(const T &&other) noexcept {
         if (other == *this) return this;
 
         arr = other.arr;
-        length = other.length;
+        _size = other.length;
         capacity = other.capacity;
         delete other;
         return this;
     }
 
     void push_back(const T &val) {
-        if (length + 1 > capacity) {
+        if (_size + 1 > capacity) {
             resize();
         }
 
-        arr[length] = val;
-        ++length;
+        arr[_size] = val;
+        ++_size;
     }
 
     void pop_back() {
-        if (length > 0) {
-            length -= 1;
+        if (_size > 0) {
+            _size -= 1;
         }
     }
 
     size_t size() const {
-        return length;
+        return _size;
+    }
+
+    bool empty() const {
+        return _size == 0;
     }
 
     T front() const {
-        if (length < 1) throw ("Empty vector");
+        if (_size < 1) throw ("Empty vector");
         return arr[0];
     }
 
     T back() const {
-        if (length == 0) throw ("Empty vector");
-        return arr[length - 1];
+        if (_size == 0) throw ("Empty vector");
+        return arr[_size - 1];
     }
 
     void resize() {
         capacity *= 2;
-        auto temp = new T[capacity];
-        std::move(arr, arr + length, temp);
-//        temp.swap(arr);
+        auto *temp = new T[capacity];
+        std::move(arr, arr + _size, temp);
+        arr = temp;
+    }
+
+    T *begin() {
+        return &arr[0];
+    }
+
+    T *end() {
+        return &arr[_size];
+    }
+
+    ~vector_() {
+        delete[] arr;
+    }
+
+    void clear() {
+        capacity = 4;
+        vector_();
     }
 
     friend ostream &operator<<(ostream &os, const vector_ &vector) {
-        for (int i = 0; i < vector.length; i++) {
+        for (int i = 0; i < vector._size; i++) {
             os << vector.arr[i] << " ";
         }
         return os;
@@ -97,13 +143,11 @@ public:
 };
 
 int main() {
-    vector_<int> arr;
-    arr.push_back(1);
-    arr.push_back(2);
-    auto temp = arr;
-//    arr.push_back(3);
+    vector_<char> arr;
+    arr.push_back('w');
+    arr.push_back('s');
+    arr.push_back('i');
+    arr.push_back('m');
+    arr.insert(1, 'a');
     cout << arr << endl;
-    arr.pop_back();
-    cout << arr << endl;
-    cout << temp << endl;
 }

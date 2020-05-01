@@ -1,0 +1,9 @@
+./cmake-build-debug
+*.out
+*.cbp
+*.log
+*.xml
+*.cmake
+*.o
+*.make
+*.txt
