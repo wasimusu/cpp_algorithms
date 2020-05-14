@@ -7,12 +7,12 @@ using namespace std;
 template<class T>
 class vector_ {
 private:
-    size_t capacity = 4;
-    T *arr;
+    size_t capacity = 2;
+    unique_ptr<T[]> arr;
     size_t _size = 0;
 public:
     vector_() {
-        arr = new T[capacity];
+        arr = make_unique<T[]>(capacity);
     }
 
     // Copy constructor
@@ -65,7 +65,7 @@ public:
 
 
     // move assignment operator
-    vector_& operator=(const T &&other) noexcept {
+    vector_ &operator=(const T &&other) noexcept {
         if (other == *this) return this;
 
         arr = other.arr;
@@ -110,9 +110,11 @@ public:
 
     void resize() {
         capacity *= 2;
-        auto *temp = new T[capacity];
-        std::move(arr, arr + _size, temp);
-        arr = temp;
+        auto temp = make_unique<T[]>(capacity);
+        for (int i = 0; i < _size; i++) {
+            temp[i] = arr[i];
+        }
+        arr = std::move(temp);
     }
 
     T *begin() {
@@ -124,7 +126,6 @@ public:
     }
 
     ~vector_() {
-        delete[] arr;
     }
 
     void clear() {
@@ -149,5 +150,16 @@ int main() {
     arr.push_back('i');
     arr.push_back('m');
     arr.insert(1, 'a');
+    arr.push_back('a');
+    arr.push_back('k');
+    arr.push_back('r');
+    arr.push_back('a');
+    arr.push_back('m');
+    arr.push_back('k');
+    arr.push_back('h');
+    arr.push_back('a');
+    arr.push_back('n');
     cout << arr << endl;
+    cout << sizeof(arr) << endl;
+    arr.clear();
 }
