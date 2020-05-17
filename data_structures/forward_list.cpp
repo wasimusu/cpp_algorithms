@@ -1,3 +1,0 @@
-/**
- * singly linked list
- * */
