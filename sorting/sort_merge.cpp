@@ -8,6 +8,29 @@ void generate_random_arrs(int *arr, int n) {
     }
 }
 
+
+/**
+ * Split an array into half recursively until the parts consist of only single elements.
+ * Merge those sorted parts
+ *
+ * 7 5 8 4 4 3 1 2
+ *
+ * Splitting input array
+ * 7 5 8 4 | 4 3 1 2
+ *
+ * Recursively split the two parts further into two parts each and so on
+ * 7 5 | 8 4 | 4 3 | 1 2
+ * 7 | 5 | 8 | 4 | 4 | 3 | 1 | 2
+ *
+ * Since a list consist of only one item, it is considered to be sorted.
+ * Now merge the sorted lists
+ *
+ * 7 | 5 | 8 | 4 | 4 | 3 | 1 | 2
+ * 5 7 | 4 8 | 3 4 | 1 2
+ * 4 5 7  8 | 1 2 3 4
+ * 1 2 3 4 4 5 7  8
+ *
+ * */
 template<class T>
 void merge(T *arr, int start, int mid, int end) {
     int n = end - start + 1;
