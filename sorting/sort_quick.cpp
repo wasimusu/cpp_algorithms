@@ -33,7 +33,7 @@ int partition(T *arr, int left, int right, T pivot) {
 
 /*
  * Recursive sorting calls.
- * Finds the pivot and calls partition() on the left and right partitions
+ * Partitions elements based on pivot so that elements on left of pivot are smaller and elements on right are greater than pivot.
  * */
 template<class T>
 void quick_sort(T *arr, int left, int right) {
