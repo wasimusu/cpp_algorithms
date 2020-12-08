@@ -13,8 +13,13 @@ void generate_random_arrs(int *arr, int n) {
 }
 
 /**
- * Pick the smallest number each time and put it in sorted order from the front
- * of the array
+ * We got n numbers with index 0 to n - 1.
+ * Consider numbers from 0 to n-1. Swap 0th item with the smallest number.
+ * Consider numbers from 1 to n-1. Swap 1st item with the smallest number.
+ * Repeat.
+ *
+ * Runtime: O(n*n)
+ * Space: O(1)
  * */
 template<class T>
 void selection_sort(T *arr, const int n) {

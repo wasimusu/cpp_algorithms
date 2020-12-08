@@ -10,6 +10,7 @@ add_executable(count sorting/sort_counting.cpp)
 add_executable(insertion sorting/sort_insertion.cpp)
 
 add_executable(segtree segment_tree.cpp)
+add_executable(test test.cpp)
 
 add_executable(vector_ data_structures/vector_.cpp)
 add_executable(list data_structures/list.cpp)
